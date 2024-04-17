@@ -1,9 +1,15 @@
-
+require("../models/database");
+const Category = require("../models/Category");
 
 //GET/ Homepage
 
-exports.homepage = async(req,res) => {
+exports.homepage = async (req, res) => {
+  try {
+    const limitNumber = 5;
+    const categories = await Category.find({}).limit(limitNumber);
+        res.render("index", { title: "Recipe Hunt - Home",categories});
 
-    res.render("index", { title: "Recipe Hunt - Home" });
-
-}
+  } catch (error) {
+    res.satus(500).send({ message: error.message || "Error Occured" });
+  }
+}; 

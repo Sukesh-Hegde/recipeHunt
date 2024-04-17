@@ -24,42 +24,27 @@
 
 <div class="row row-cols-2 row-cols-lg-6 g-2 g-lg-3 py-4">
 
+    <% if(categories !='' ){ %>
+        <% categories.forEach(function(catagory,index){%>
+
+            <a href="/categories/<%- catagory.name %>" class="col text-center category__link">
+                <div class="category__img shadow">
+                    <img src="img/<%- catagory.image %>" alt="<%- catagory.name %>" loading="lazy">
+                </div>
+                <div class="pt-1"><%- catagory.name %></div>
+            </a>
+        <% }) %>
+    <% } %>
 
 
-    <a href="/categories" class="col text-center category__link">
-        <div class="category__img shadow">
-            <img src="img/american-food.jpg" alt="View All Categories" loading="lazy">
-        </div>
-        <div class="pt-1">View All</div>
-    </a>
 
-    <a href="/categories" class="col text-center category__link">
-        <div class="category__img shadow">
-            <img src="img/american-food.jpg" alt="View All Categories" loading="lazy">
-        </div>
-        <div class="pt-1">View All</div>
-    </a>
+                    <a href="/categories" class="col text-center category__link">
+                        <div class="category__img shadow">
+                            <img src="img/american-food.jpg" alt="View All Categories" loading="lazy">
+                        </div>
+                        <div class="pt-1">View All</div>
+                    </a>
 
-    <a href="/categories" class="col text-center category__link">
-        <div class="category__img shadow">
-            <img src="img/american-food.jpg" alt="View All Categories" loading="lazy">
-        </div>
-        <div class="pt-1">View All</div>
-    </a>
-
-    <a href="/categories" class="col text-center category__link">
-        <div class="category__img shadow">
-            <img src="img/american-food.jpg" alt="View All Categories" loading="lazy">
-        </div>
-        <div class="pt-1">View All</div>
-    </a>
-
-    <a href="/categories" class="col text-center category__link">
-        <div class="category__img shadow">
-            <img src="img/american-food.jpg" alt="View All Categories" loading="lazy">
-        </div>
-        <div class="pt-1">View All</div>
-    </a>
 
 
 

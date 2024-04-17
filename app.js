@@ -1,6 +1,7 @@
 const { config } = require("dotenv");
 const express = require("express");
 const expressLayouts = require("express-ejs-layouts");
+const connectUsingMongoose = require('./server/models/database.js')
 
 const app = express();
 const port =process.env.PORT || 3000;
@@ -20,4 +21,5 @@ app.use('/', routes);
 
 app.listen(port,()=>{
     console.log(`Listening to port ${port}`);
+    connectUsingMongoose();
 });

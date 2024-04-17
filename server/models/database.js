@@ -1,7 +1,8 @@
 // Using module.exports
 const mongoose = require("mongoose");
 
-const url = process.env.MONGODB_URI;
+// const url = process.env.MONGODB_URI;
+  const url = "mongodb://localhost:27017/RecipeHunt";
 const connectUsingMongoose = async () => {
   try {
     await mongoose.connect(url, {
