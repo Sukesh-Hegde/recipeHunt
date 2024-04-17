@@ -11,7 +11,7 @@ exports.homepage = async (req, res) => {
     const latest = await Recipe.find({})
       .sort({ _id: -1 }) // this will find the latest recipe from the database
       .limit(limitNumber);
-    const thai = await Recipe.find({ 'category': 'Thai'}).limit(limitNumber);
+    const thai = await Recipe.find({ category: "Thai" }).limit(limitNumber);
     const american = await Recipe.find({ category: "American" }).limit(
       limitNumber
     );
@@ -38,6 +38,58 @@ exports.exploreCategories = async (req, res) => {
     res.satus(500).send({ message: error.message || "Error Occured" });
   }
 };
+
+
+//GET/ recipe/:id
+
+exports.exploreRecipe = async (req, res) => {
+  try {
+
+
+    res.render("recipe", { title: "Recipe Hunt - Recipe",  });
+  } catch (error) {
+    res.satus(500).send({ message: error.message || "Error Occured" });
+  }
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // async function insertRecipeDummyData() {
 //   try {
