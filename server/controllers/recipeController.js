@@ -44,13 +44,13 @@ exports.exploreCategories = async (req, res) => {
 
 exports.exploreRecipe = async (req, res) => {
   try {
-
-
-    res.render("recipe", { title: "Recipe Hunt - Recipe",  });
+    let recipeId = req.params.id;
+    const recipe = await Recipe.findById(recipeId);
+    res.render("recipe", { title: "Recipe Hunt - Recipe", recipe });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
   }
-};
+}; 
 
 
 
