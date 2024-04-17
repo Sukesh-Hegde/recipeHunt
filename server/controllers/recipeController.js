@@ -1,5 +1,7 @@
 require("../models/database");
 const Category = require("../models/Category");
+const Recipe = require("../models/Recipe");
+
 
 //GET/ Homepage
 
@@ -25,3 +27,5 @@ exports.exploreCategories = async (req, res) => {
     res.satus(500).send({ message: error.message || "Error Occured" });
   }
 }; 
+
+
