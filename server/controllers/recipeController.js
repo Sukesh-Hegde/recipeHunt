@@ -11,8 +11,15 @@ exports.homepage = async (req, res) => {
     const latest = await Recipe.find({})
       .sort({ _id: -1 }) // this will find the latest recipe from the database
       .limit(limitNumber);
+    const thai = await Recipe.find({ 'category': 'Thai'}).limit(limitNumber);
+    const american = await Recipe.find({ category: "American" }).limit(
+      limitNumber
+    );
+    const chinese = await Recipe.find({ category: "Chinese" }).limit(
+      limitNumber
+    );
 
-    const food ={latest}
+    const food = { latest, thai, american, chinese };
 
     res.render("index", { title: "Recipe Hunt - Home", categories, food });
   } catch (error) {
