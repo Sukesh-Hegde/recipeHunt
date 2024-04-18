@@ -83,7 +83,7 @@ exports.searchRecipe = async (req, res) => {
       $text: { $search: searchTerm, $diacriticSensitive: true }, //for the search, made changes in replica Schema also
     });
      // res.json(recipe);
-    res.render("search", { title: "Cooking Blog - Search", recipe });
+    res.render("search", { title: "Recipe Hunt - Search", recipe });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
   }
@@ -98,7 +98,10 @@ exports.exploreLatest = async (req, res) => {
   try {
     const limitNumber = 20;
     const recipe = await Recipe.find({}).sort({ _id: -1 }).limit(limitNumber); 
-    res.render("explore-latest", { title: "Cooking Blog - Explore_Latest", recipe });
+    res.render("explore-latest", {
+      title: "Recipe Hunt- Explore_Latest",
+      recipe,
+    });
 
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
@@ -115,7 +118,10 @@ exports.exploreRandom = async(req, res) => {
     let count = await Recipe.find().countDocuments(); //count the number of recipes fro database
     let random = Math.floor(Math.random() * count);
     let recipe = await Recipe.findOne().skip(random).exec();
-    res.render('explore-random', { title: 'Cooking Blog - Explore Latest', recipe } );
+    res.render("explore-random", {
+      title: "Recipe Hunt - Explore Random",
+      recipe,
+    });
   } catch (error) {
     res.satus(500).send({message: error.message || "Error Occured" });
   }
