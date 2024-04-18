@@ -82,15 +82,13 @@ exports.searchRecipe = async (req, res) => {
     let recipe = await Recipe.find({
       $text: { $search: searchTerm, $diacriticSensitive: true }, //for the search, made changes in replica Schema also
     });
-    // res.json(recipe);
-      res.render("search", { title: "Cooking Blog - Search", recipe });
-
+     // res.json(recipe);
+    res.render("search", { title: "Cooking Blog - Search", recipe });
   } catch (error) {
     res.satus(500).send({ message: error.message || "Error Occured" });
   }
-
-  res.render("search", { title: "Cooking Blog - Search" });
 };
+
 
 
 
