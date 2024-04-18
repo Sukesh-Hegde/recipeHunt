@@ -128,7 +128,17 @@ exports.exploreRandom = async(req, res) => {
 } 
 
 
+/**
+ * GET /submit-recipe
+ * Submit Recipe
+*/
+exports.submitRecipe = async(req, res) => {
 
+  res.render("submit-recipe", {
+    title: "Recipe Hunt - Submit Recipe",
+
+  });
+}
 
 
 
