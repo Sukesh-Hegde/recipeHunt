@@ -16,7 +16,7 @@ app.use(express.urlencoded({extended:true}));
 app.use(express.static('public'));
 app.use(expressLayouts);
 
-app.use(cookieParser('CookingBlogSecure'));
+app.use(cookieParser("SecretKey"));
 app.use(session({
   secret: 'CookingBlogSecretSession',
   saveUninitialized: true,
