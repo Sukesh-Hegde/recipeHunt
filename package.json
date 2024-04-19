@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start":"nodemon app.js "
+    "start": "nodemon app.js "
   },
   "author": "sukesh Hegde",
   "license": "ISC",
@@ -19,7 +19,8 @@
     "express-fileupload": "^1.5.0",
     "express-session": "^1.18.0",
     "mongodb": "^6.5.0",
-    "mongoose": "^8.3.1"
+    "mongoose": "^8.3.1",
+    "nodemailer": "^6.9.13"
   },
   "devDependencies": {
     "nodemon": "^3.1.0"
