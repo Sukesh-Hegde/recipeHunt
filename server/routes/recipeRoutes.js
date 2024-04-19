@@ -11,16 +11,20 @@ RecipeRouter.get("/", (req, res) => {
 });
 
 RecipeRouter.get("/recipe/:id", (req, res) => {
-  controller.exploreCategories(req, res);
-});
-
-RecipeRouter.get("/categories", (req, res) => {
-  controller.exploreCategories(req, res);
+  controller.exploreRecipe(req, res);
 });
 
 RecipeRouter.get("/categories/:id", (req, res) => {
   controller.exploreCategoriesById(req, res);
 });
+
+
+
+RecipeRouter.get("/categories", (req, res) => {
+  controller.exploreCategories(req, res);
+});
+
+
 
 RecipeRouter.post("/search", (req, res) => {
   controller.searchRecipe(req, res);
