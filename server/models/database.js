@@ -1,11 +1,10 @@
-// Using module.exports
-const mongoose = require("mongoose");
-const dotenv = require('dotenv');
+import mongoose from "mongoose";
+import dotenv from "dotenv";
 dotenv.config();
 
 const url = process.env.MONGODB_URI;
-  // const url = "mongodb://localhost:27017/RecipeHunt";
-const connectUsingMongoose = async () => {
+// const url = "mongodb://localhost:27017/RecipeHunt";
+export const connectUsingMongoose = async () => {
   try {
     await mongoose.connect(url, {
       useNewUrlParser: true,
@@ -18,4 +17,3 @@ const connectUsingMongoose = async () => {
   }
 };
 
-module.exports = connectUsingMongoose;

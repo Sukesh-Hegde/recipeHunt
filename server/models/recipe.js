@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+import mongoose from "mongoose";
 
 const recipeSchema = new mongoose.Schema({
   name: {
@@ -32,4 +32,5 @@ recipeSchema.index({ name: "text", description: "text" }); //for the search
 // WildCard Indexing
 //recipeSchema.index({ "$**" : 'text' });
 
-module.exports = mongoose.model("Recipe", recipeSchema);
+const Recipe = mongoose.model("Recipe", recipeSchema);
+export default Recipe;

@@ -1,40 +1,39 @@
-const { config } = require("dotenv");
-const express = require("express");
-const expressLayouts = require("express-ejs-layouts");
-const fileUpload = require('express-fileupload');
-const cookieParser = require('cookie-parser');
-const session = require("express-session");
-const flash = require('connect-flash');
-const connectUsingMongoose = require('./server/models/database.js')
+import express from "express";
+import dotenv from "dotenv";
+import expressLayouts from "express-ejs-layouts";
+import fileUpload from "express-fileupload";
+import cookieParser from "cookie-parser";
+import session from "express-session";
+import flash from "connect-flash";
+import { connectUsingMongoose } from "./server/models/database.js";
+
 
 const app = express();
-const port =process.env.PORT || 3000;
+const port = process.env.PORT || 3000;
 
-require('dotenv').config();
 
-app.use(express.urlencoded({extended:true}));
-app.use(express.static('public'));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.static("public"));
 app.use(expressLayouts);
 
 app.use(cookieParser("SecretKey"));
-app.use(session({
-  secret: 'CookingBlogSecretSession',
-  saveUninitialized: true,
-  resave: true
-}));
+app.use(
+  session({
+    secret: "CookingBlogSecretSession",
+    saveUninitialized: true,
+    resave: true,
+  })
+);
 app.use(flash());
 app.use(fileUpload());
 
+app.set("layout", "./layouts/main");
+app.set("view engine", "ejs");
 
+import RecipeRouter from './server/routes/recipeRoutes.js'
+app.use("/", RecipeRouter);
 
-app.set('layout','./layouts/main');
-app.set('view engine',"ejs")
-
-
-const routes = require('./server/routes/recipeRoutes.js');
-app.use('/', routes);
-
-app.listen(port,()=>{
-    console.log(`Listening to port ${port}`);
-    connectUsingMongoose();
+app.listen(port, () => {
+  console.log(`Listening to port ${port}`);
+  connectUsingMongoose();
 });

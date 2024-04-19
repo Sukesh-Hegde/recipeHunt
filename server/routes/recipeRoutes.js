@@ -1,22 +1,51 @@
-const express = require('express');
-const router = express.Router();
-const recipeController = require('../controllers/recipeController');
 
+import express from "express";
+const RecipeRouter = express.Router();
+import RecipeController from "../controllers/recipeController.js";
 
+const controller = new RecipeController();
 
 //App routers
-router.get("/", recipeController.homepage);
-router.get("/recipe/:id", recipeController.exploreRecipe);
-router.get("/categories", recipeController.exploreCategories);
-router.get("/categories/:id", recipeController.exploreCategoriesById);
-router.post("/search", recipeController.searchRecipe);
-router.get("/explore-latest", recipeController.exploreLatest);
-router.get("/explore-random", recipeController.exploreRandom);
-router.get("/submit-recipe", recipeController.submitRecipe);
-router.post("/submit-recipe", recipeController.submitRecipeOnPost);
-router.get("/contact", recipeController.contactForm);
+RecipeRouter.get("/", (req, res) => {
+  controller.homepage(req, res);
+});
+
+RecipeRouter.get("/recipe/:id", (req, res) => {
+  controller.exploreCategories(req, res);
+});
+
+RecipeRouter.get("/categories", (req, res) => {
+  controller.exploreCategories(req, res);
+});
+
+RecipeRouter.get("/categories/:id", (req, res) => {
+  controller.exploreCategoriesById(req, res);
+});
+
+RecipeRouter.get("/search", (req, res) => {
+  controller.searchRecipe(req, res);
+});
+
+RecipeRouter.get("/explore-latest", (req, res) => {
+  controller.exploreLatest(req, res);
+});
+
+RecipeRouter.get("/explore-random", (req, res) => {
+  controller.exploreRandom(req, res);
+});
+
+RecipeRouter.get("/submit-recipe", (req, res) => {
+  controller.submitRecipe(req, res);
+});
+
+RecipeRouter.get("/submit-recipe", (req, res) => {
+  controller.submitRecipeOnPost(req, res);
+});
+
+RecipeRouter.get("/contact", (req, res) => {
+  controller.contactForm(req, res);
+});
 
 
 
-
-module.exports = router;
+export default RecipeRouter;
