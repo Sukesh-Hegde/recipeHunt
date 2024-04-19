@@ -175,12 +175,12 @@ export default class RecipeController {
         image: newImageName,
       });
       await newRecipe.save();
-      await sendSubmitMail(newRecipe)
+      await sendSubmitMail(newRecipe);
 
       req.flash("infoSubmit", "Recipe has been added.");
       res.redirect("/submit-recipe");
     } catch (error) {
-      console.log(error)
+      console.log(error);
       req.flash("infoErrors", error);
       res.redirect("/submit-recipe");
     }
@@ -193,7 +193,19 @@ export default class RecipeController {
   async contactForm(req, res) {
     res.render("contact", { title: "Recipe Hunt- Contact-form" });
   }
+
+  /**
+   * GET /About
+   *
+   */
+  async aboutPage(req, res) {
+    res.render("about", { title: "Recipe Hunt- About" });
+  }
 }
+
+  
+
+
 
 // Delete Recipe
 // async function deleteRecipe(){

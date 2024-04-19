@@ -50,6 +50,10 @@ RecipeRouter.get("/contact", (req, res) => {
   controller.contactForm(req, res);
 });
 
+RecipeRouter.get("/about", (req, res) => {
+  controller.aboutPage(req, res);
+});
+
 
 
 export default RecipeRouter;
