@@ -1,7 +1,8 @@
 import { connectUsingMongoose } from "../models/database.js";
 import Category from "../models/Category.js";
 import Recipe from "../models/Recipe.js";
-
+import { sendSubmitMail } from "../utils/emails/submitMail.js";
+import path from "path";
 
 export default class RecipeController {
   //GET/ Homepage
@@ -158,8 +159,7 @@ export default class RecipeController {
         imageUploadFile = req.files.image;
         newImageName = Date.now() + imageUploadFile.name;
 
-        uploadPath =
-          require("path").resolve("./") + "/public/uploads/" + newImageName;
+        uploadPath = path.resolve("./") + "/public/uploads/" + newImageName;
 
         imageUploadFile.mv(uploadPath, function (err) {
           if (err) return res.satus(500).send(err);
@@ -174,13 +174,14 @@ export default class RecipeController {
         category: req.body.category,
         image: newImageName,
       });
-
+      console.log("from controller",newRecipe)
       await newRecipe.save();
+      await sendSubmitMail(newRecipe)
 
       req.flash("infoSubmit", "Recipe has been added.");
       res.redirect("/submit-recipe");
     } catch (error) {
-      // res.json(error);
+      console.log(error)
       req.flash("infoErrors", error);
       res.redirect("/submit-recipe");
     }

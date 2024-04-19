@@ -22,7 +22,7 @@ RecipeRouter.get("/categories/:id", (req, res) => {
   controller.exploreCategoriesById(req, res);
 });
 
-RecipeRouter.get("/search", (req, res) => {
+RecipeRouter.post("/search", (req, res) => {
   controller.searchRecipe(req, res);
 });
 
@@ -38,7 +38,7 @@ RecipeRouter.get("/submit-recipe", (req, res) => {
   controller.submitRecipe(req, res);
 });
 
-RecipeRouter.get("/submit-recipe", (req, res) => {
+RecipeRouter.post("/submit-recipe", (req, res) => {
   controller.submitRecipeOnPost(req, res);
 });
 
