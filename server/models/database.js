@@ -1,8 +1,10 @@
 // Using module.exports
 const mongoose = require("mongoose");
+const dotenv = require('dotenv');
+dotenv.config();
 
-// const url = process.env.MONGODB_URI;
-  const url = "mongodb://localhost:27017/RecipeHunt";
+const url = process.env.MONGODB_URI;
+  // const url = "mongodb://localhost:27017/RecipeHunt";
 const connectUsingMongoose = async () => {
   try {
     await mongoose.connect(url, {
