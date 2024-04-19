@@ -2,7 +2,6 @@
 import nodemailer from "nodemailer";
 
 export const sendSubmitMail = async (recipe) => {
-    console.log(recipe)
   const transporter = nodemailer.createTransport({
     service: process.env.SMPT_SERVICE,
     auth: {
@@ -14,7 +13,7 @@ export const sendSubmitMail = async (recipe) => {
   const mailOptions = {
     from: process.env.STORFLEET_SMPT_MAIL,
     to: recipe.email,
-    subject: "Thank You for Submitting Your Recipe!",
+    subject: "Your Recipe Submitted!",
     html: `
         <!DOCTYPE html>
         <html lang="en">
@@ -55,13 +54,14 @@ export const sendSubmitMail = async (recipe) => {
             <div class="container">
                 <div class="header">
                     <img class="logo" src="https://logowik.com/content/uploads/images/food-service4537.jpg" alt="Storefleet Logo">
-                    <h1>Welcome to Storefleet, ${recipe.name}!</h1>
+                    <h1>Thank You for Submitting Your Recipe! </h1>
                 </div>
                 <div class="content">
-                    <p>Thank you for joining Storefleet. We are excited to have you on board.</p>
-                    <p>Feel free to explore our website and discover amazing products.</p>
-                    <p>If you have any questions or need assistance, please don't hesitate to contact us.</p>
-                    <p>Happy shopping!</p>
+                    <p>We wanted to take a moment to express our sincere gratitude for sharing your recipe, "${recipe.name}" with us.</p>
+                    <p>Your contribution means a lot to our community of food
+                     enthusiasts, and we're thrilled to have the opportunity to feature it on our website.</p>
+                    <p>If you have any questions or need further assistance, please don't hesitate to reach out to us.</p>
+                    
                 </div>
             </div>
         </body>

@@ -174,7 +174,6 @@ export default class RecipeController {
         category: req.body.category,
         image: newImageName,
       });
-      console.log("from controller",newRecipe)
       await newRecipe.save();
       await sendSubmitMail(newRecipe)
 
