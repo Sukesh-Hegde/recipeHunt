@@ -135,7 +135,11 @@ exports.exploreRandom = async(req, res) => {
 exports.submitRecipe = async(req, res) => {
   const infoErrorsObj = req.flash('infoErrors');
   const infoSubmitObj = req.flash('infoSubmit');
-  res.render('submit-recipe', { title: 'Cooking Blog - Submit Recipe', infoErrorsObj, infoSubmitObj  } );
+  res.render("submit-recipe", {
+    title: "Recipe Hunt- Submit Recipe",
+    infoErrorsObj,
+    infoSubmitObj,
+  });
 }
 
 /**
@@ -183,6 +187,15 @@ exports.submitRecipeOnPost = async(req, res) => {
     res.redirect('/submit-recipe');
   }
 }
+
+/**
+ * GET /contact
+ * 
+*/
+exports.contactForm = async (req, res) => {
+
+  res.render("contact", {title: "Recipe Hunt- Contact-form"});
+};
 
 // Delete Recipe
 // async function deleteRecipe(){
