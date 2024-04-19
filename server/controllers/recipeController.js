@@ -184,7 +184,28 @@ exports.submitRecipeOnPost = async(req, res) => {
   }
 }
 
+// Delete Recipe
+// async function deleteRecipe(){
+//   try {
+//     await Recipe.deleteOne({ name: 'New Recipe From Form' });
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+// deleteRecipe();
 
+
+// Update Recipe
+// async function updateRecipe(){
+//   try {
+//     const res = await Recipe.updateOne({ name: 'New Recipe' }, { name: 'New Recipe Updated' });
+//     res.n; // Number of documents matched
+//     res.nModified; // Number of documents modified
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+// updateRecipe();
 
 
 
