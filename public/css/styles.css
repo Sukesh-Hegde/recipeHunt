@@ -296,7 +296,7 @@ a { color: var(--bs-dark); }
 
 .aboutSec {
 	background: rgb(224, 251, 222);
-	background: linear-gradient(360deg, rgb(245, 255, 245) 0%, rgb(173, 252, 163) 100%);
+	background: linear-gradient(360deg, rgb(159, 192, 159) 0%, rgb(127, 143, 126) 100%);
 	padding: 100px 0 20px 0;
 	text-align: center;
 }
