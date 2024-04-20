@@ -9,6 +9,9 @@ const controller = new RecipeController();
 RecipeRouter.get("/", (req, res) => {
   controller.homepage(req, res);
 });
+// RecipeRouter.get("/", (req, res) => {
+//   controller.insertRecipeDummyData(req, res);
+// });
 
 RecipeRouter.get("/recipe/:id", (req, res) => {
   controller.exploreRecipe(req, res);
