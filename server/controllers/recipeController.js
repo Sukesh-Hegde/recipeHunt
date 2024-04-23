@@ -201,7 +201,6 @@ export default class RecipeController {
   async aboutPage(req, res) {
     res.render("about", { title: "Recipe Hunt- About" });
   }
-
 //   async insertRecipeDummyData(req, res) {
 //     try {
 //       await Category.insertMany(
