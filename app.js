@@ -6,10 +6,12 @@ import cookieParser from "cookie-parser";
 import session from "express-session";
 import flash from "connect-flash";
 import { connectUsingMongoose } from "./server/models/database.js";
+import cors from 'cors'
 
+app.use(cors())
 
 const app = express();
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 
 app.use(express.urlencoded({ extended: true }));
