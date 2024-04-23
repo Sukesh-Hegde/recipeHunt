@@ -8,11 +8,12 @@ import flash from "connect-flash";
 import { connectUsingMongoose } from "./server/models/database.js";
 import cors from 'cors'
 
-app.use(cors())
+
 
 const app = express();
 const port = process.env.PORT || 3000;
 
+app.use(cors());
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
