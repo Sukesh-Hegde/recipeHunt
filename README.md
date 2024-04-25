@@ -1,5 +1,3 @@
-images:- https://www.jamieoliver.com/
-
 #Recipe Hunt
 
 ##Table of Contents
@@ -22,7 +20,7 @@ Random Recipe Selection: Users can choose to view a random recipe, providing an 
 User-friendly Submission Form: The submission form allows users to submit their own recipes conveniently, contributing to the recipe database.
 Automated Thank-You Emails: Upon submitting a recipe, users receive automated thank-you emails via Nodemailer, enhancing user engagement and satisfaction.
 
-## Technologies Used
+## TechnologiesUsed
 JavaScript
 Node.js
 Bootstrap
@@ -45,6 +43,7 @@ MongoDB
 
 ## Contributing
 Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
+images:- https://www.jamieoliver.com/
 
 
 Acknowledgements
