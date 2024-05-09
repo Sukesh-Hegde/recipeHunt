@@ -1,4 +1,4 @@
-import { connectUsingMongoose } from "../models/database.js";
+import { connectUsingMongoose } from "../../config/database.js";
 import Category from "../models/Category.js";
 import Recipe from "../models/Recipe.js";
 import { sendSubmitMail } from "../utils/emails/submitMail.js";
@@ -201,64 +201,58 @@ export default class RecipeController {
   async aboutPage(req, res) {
     res.render("about", { title: "Recipe Hunt- About" });
   }
-//   async insertRecipeDummyData(req, res) {
-//     try {
-//       await Category.insertMany(
-//         [{
-//   "_id": {
-//     "$oid": "614dd75a9693912a00f0514d"
-//   },
-//   "name": "American",
-//   "image": "american-food.jpg",
-//   "__v": 0
-// },{
-//   "_id": {
-//     "$oid": "614dd75a9693912a00f0514e"
-//   },
-//   "name": "Chinese",
-//   "image": "chinese-food.jpg",
-//   "__v": 0
-// },{
-//   "_id": {
-//     "$oid": "614dd75a9693912a00f0514c"
-//   },
-//   "name": "Thai",
-//   "image": "thai-food.jpg",
-//   "__v": 0
-// },{
-//   "_id": {
-//     "$oid": "614dd75a9693912a00f0514f"
-//   },
-//   "name": "Mexican",
-//   "image": "mexican-food.jpg",
-//   "__v": 0
-// },{
-//   "_id": {
-//     "$oid": "614dd75a9693912a00f05150"
-//   },
-//   "name": "Indian",
-//   "image": "indian-food.jpg",
-//   "__v": 0
-// },{
-//   "_id": {
-//     "$oid": "614dd75a9693912a00f05151"
-//   },
-//   "name": "Spanish",
-//   "image": "spanish-food.jpg",
-//   "__v": 0
-// }]
-//       );
-//     } catch (error) {
-//       console.log(error);
-//     }
-//   }
-
-  
+  //   async insertRecipeDummyData(req, res) {
+  //     try {
+  //       await Category.insertMany(
+  //         [{
+  //   "_id": {
+  //     "$oid": "614dd75a9693912a00f0514d"
+  //   },
+  //   "name": "American",
+  //   "image": "american-food.jpg",
+  //   "__v": 0
+  // },{
+  //   "_id": {
+  //     "$oid": "614dd75a9693912a00f0514e"
+  //   },
+  //   "name": "Chinese",
+  //   "image": "chinese-food.jpg",
+  //   "__v": 0
+  // },{
+  //   "_id": {
+  //     "$oid": "614dd75a9693912a00f0514c"
+  //   },
+  //   "name": "Thai",
+  //   "image": "thai-food.jpg",
+  //   "__v": 0
+  // },{
+  //   "_id": {
+  //     "$oid": "614dd75a9693912a00f0514f"
+  //   },
+  //   "name": "Mexican",
+  //   "image": "mexican-food.jpg",
+  //   "__v": 0
+  // },{
+  //   "_id": {
+  //     "$oid": "614dd75a9693912a00f05150"
+  //   },
+  //   "name": "Indian",
+  //   "image": "indian-food.jpg",
+  //   "__v": 0
+  // },{
+  //   "_id": {
+  //     "$oid": "614dd75a9693912a00f05151"
+  //   },
+  //   "name": "Spanish",
+  //   "image": "spanish-food.jpg",
+  //   "__v": 0
+  // }]
+  //       );
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   }
 }
-
-  
-
-
 
 // Delete Recipe
 // async function deleteRecipe(){
@@ -281,13 +275,6 @@ export default class RecipeController {
 //   }
 // }
 // updateRecipe();
-
-
-
-
-
-
-
 
 // async function insertRecipeDummyData() {
 //   try {
