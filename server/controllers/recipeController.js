@@ -117,7 +117,7 @@ export default class RecipeController {
    */
   async exploreRandom(req, res) {
     try {
-      let count = await Recipe.find().countDocuments(); //count the number of recipes fro database
+      let count = await Recipe.find().countDocuments(); 
       let random = Math.floor(Math.random() * count);
       let recipe = await Recipe.findOne().skip(random).exec();
       res.render("explore-random", {
