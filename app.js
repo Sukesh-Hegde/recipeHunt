@@ -1,5 +1,4 @@
 import express from "express";
-import dotenv from "dotenv";
 import expressLayouts from "express-ejs-layouts";
 import fileUpload from "express-fileupload";
 import cookieParser from "cookie-parser";

@@ -10,9 +10,9 @@ export default class RecipeController {
   async homepage(req, res) {
     try {
       const limitNumber = 5;
-      const categories = await Category.find({}).limit(limitNumber); //find({}) it will find from the starting
+      const categories = await Category.find({}).limit(limitNumber); 
       const latest = await Recipe.find({})
-        .sort({ _id: -1 }) // this will find the latest recipe from the database
+        .sort({ _id: -1 })
         .limit(limitNumber);
       const thai = await Recipe.find({ category: "Thai" }).limit(limitNumber);
       const american = await Recipe.find({ category: "American" }).limit(
@@ -77,9 +77,8 @@ export default class RecipeController {
     }
   }
 
-  /**
-   * POST /search
-   *
+  /*
+    POST /search
    */
   async searchRecipe(req, res) {
     try {
@@ -95,8 +94,7 @@ export default class RecipeController {
   }
 
   /**
-   * GET /explore-latest
-   *
+   GET /explore-latest
    */
   async exploreLatest(req, res) {
     try {
@@ -119,7 +117,7 @@ export default class RecipeController {
     try {
       let count = await Recipe.find().countDocuments(); 
       let random = Math.floor(Math.random() * count);
-      let recipe = await Recipe.findOne().skip(random).exec();
+      let recipe = await Recipe.findOne().skip(random);
       res.render("explore-random", {
         title: "Recipe Hunt - Explore Random",
         recipe,
