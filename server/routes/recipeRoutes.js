@@ -6,6 +6,10 @@ import RecipeController from "../controllers/recipeController.js";
 const controller = new RecipeController();
 
 //App routers
+RecipeRouter.post("/chat", (req, res) => {
+  controller.chatRecipe(req, res);
+});
+
 RecipeRouter.get("/", (req, res) => {
   controller.homepage(req, res);
 });

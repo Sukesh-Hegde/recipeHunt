@@ -1,8 +1,10 @@
-import { connectUsingMongoose } from "../../config/database.js";
 import Category from "../models/Category.js";
 import Recipe from "../models/Recipe.js";
 import { sendSubmitMail } from "../utils/emails/submitMail.js";
 import path from "path";
+import { GoogleGenerativeAI } from "@google/generative-ai";
+
+const genAI = new GoogleGenerativeAI(process.env.API_KEY);
 
 export default class RecipeController {
   //GET/ Homepage
@@ -10,10 +12,8 @@ export default class RecipeController {
   async homepage(req, res) {
     try {
       const limitNumber = 5;
-      const categories = await Category.find({}).limit(limitNumber); 
-      const latest = await Recipe.find({})
-        .sort({ _id: -1 })
-        .limit(limitNumber);
+      const categories = await Category.find({}).limit(limitNumber);
+      const latest = await Recipe.find({}).sort({ _id: -1 }).limit(limitNumber);
       const thai = await Recipe.find({ category: "Thai" }).limit(limitNumber);
       const american = await Recipe.find({ category: "American" }).limit(
         limitNumber
@@ -26,7 +26,7 @@ export default class RecipeController {
 
       res.render("index", { title: "Recipe Hunt - Home", categories, food });
     } catch (error) {
-      res.satus(500).send({ message: error.message || "Error Occured" });
+      res.status(500).send({ message: error.message || "Error Occured" });
     }
   }
 
@@ -115,7 +115,7 @@ export default class RecipeController {
    */
   async exploreRandom(req, res) {
     try {
-      let count = await Recipe.find().countDocuments(); 
+      let count = await Recipe.find().countDocuments();
       let random = Math.floor(Math.random() * count);
       let recipe = await Recipe.findOne().skip(random);
       res.render("explore-random", {
@@ -199,6 +199,25 @@ export default class RecipeController {
   async aboutPage(req, res) {
     res.render("about", { title: "Recipe Hunt- About" });
   }
+
+  async chatRecipe(req, res) {
+    const {message} = req.body;
+    try {
+      const genAI = new GoogleGenerativeAI(process.env.API_KEY);
+      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+      const result = await model.generateContent(message);
+      const response = await result.response;
+      const text = response.text();
+      // console.log(text);
+      res.json({ response: text });
+    } catch (error) {
+      res.status(500).json({ error: "Failed to generate response" });
+    }
+   
+      
+
+  }
+
   //   async insertRecipeDummyData(req, res) {
   //     try {
   //       await Category.insertMany(

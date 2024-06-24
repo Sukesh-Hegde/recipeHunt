@@ -11,6 +11,8 @@
   "author": "sukesh Hegde",
   "license": "ISC",
   "dependencies": {
+    "@google/generative-ai": "^0.13.0",
+    "body-parser": "^1.20.2",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",

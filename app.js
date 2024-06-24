@@ -6,11 +6,14 @@ import session from "express-session";
 import flash from "connect-flash";
 import { connectUsingMongoose } from "./config/database.js";
 import cors from "cors";
+import bodyParser from "body-parser";
 
 const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(cors());
+app.use(bodyParser.json());
+
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));

@@ -48,8 +48,96 @@
                 </form>
             </div>
 
+            <style>
+                /* Chatbox styles */
+                .chatbox {
+                    position: fixed;
+                    bottom: 20px;
+                    right: 20px;
+                    width: 322px;
+                    max-height: 400px;
+                    background-color: #fff;
+                    border: 1px solid #ddd;
+                    border-radius: 10px;
+                    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+                    display: flex;
+                    z-index: 1000;
+                    flex-direction: column;
+                    justify-content: space-between;
+                }
+
+                .chatbox-header {
+                    background-color: #050709;
+                    color: #fff;
+                    padding: 10px;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                }
+
+                .chatbox-messages {
+                    flex: 1;
+                    padding: 10px;
+                    overflow-y: auto;
+                }
+
+                .chatbox-input {
+                    display: flex;
+                    border-top: 1px solid #ddd;
+                }
+
+                .chatbox-input input {
+                    flex: 1;
+                    padding: 10px;
+                    border: none;
+                    border-bottom-left-radius: 10px;
+                    border-bottom-right-radius: 10px;
+                }
+
+                .chatbox-input button {
+                    padding: 10px;
+                    border: none;
+                    background-color: #020304;
+                    color: #fff;
+                    border-bottom-right-radius: 10px;
+                }
+
+                .btn-close {
+                    background-color: #ff0000;
+                    color: white;
+                    border: none;
+                    padding: 5px 10px;
+                    cursor: pointer;
+                }
+            </style>
+
         </header>
         <main>
+
+
+
+            <!-- Chatbox -->
+
+            <div class="chatbox" id="chatbox">
+                <div class="chatbox-header">
+                    <h5>Ask with Gmini</h5>
+                    <button type="button" class="btn-close" aria-label="Close" onclick="closeChatbox()"></button>
+                </div>
+                <div class="chatbox-messages" id="chatbox-messages">
+                    <!-- Messages will appear here -->
+                </div>
+                <div class="chatbox-input">
+                    <input type="text" id="chatbox-gemni" name="message" placeholder="Type a message...">
+                    <button type="button" onclick="sendMessage()">Send</button>
+                </div>
+            </div>
+
+
+
+
+
 
             <%-body-%>
 
@@ -130,6 +218,37 @@
 
 
 </body>
+<script>
+    function closeChatbox() {
+        document.getElementById('chatbox').style.display = 'none';
+    }
+
+    async function sendMessage() {
+        const input = document.getElementById('chatbox-gemni');
+        const message = input.value.trim();
+        if (!message) return;
+
+        input.value = '';
+        const chatboxMessages = document.getElementById('chatbox-messages');
+        const userMessage = document.createElement('div');
+        userMessage.textContent = "You: " + message;
+        chatboxMessages.appendChild(userMessage);
+
+        const response = await fetch('/chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ message })
+        });
+
+        const data = await response.json();
+        const botMessage = document.createElement('div');
+        botMessage.textContent = "Gmini: " + data.response;
+        chatboxMessages.appendChild(botMessage);
+        chatboxMessages.scrollTop = chatboxMessages.scrollHeight;
+    }
+</script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
     crossorigin="anonymous"></script>
