@@ -117,28 +117,24 @@
         <main>
 
 
+            <% if(title=='Recipe Hunt - Home' ){ %>
+                <!-- Chatbox -->
 
-            <!-- Chatbox -->
-
-            <div class="chatbox" id="chatbox">
-                <div class="chatbox-header">
-                    <h5>Ask with Gmini</h5>
-                    <button type="button" class="btn-close" aria-label="Close" onclick="closeChatbox()"></button>
+                <div class="chatbox" id="chatbox">
+                    <div class="chatbox-header">
+                        <h5>Ask with Gmini</h5>
+                        <button type="button" class="btn-close" aria-label="Close" onclick="closeChatbox()"></button>
+                    </div>
+                    <div class="chatbox-messages" id="chatbox-messages">
+                        <!-- Messages will appear here -->
+                    </div>
+                    <div class="chatbox-input">
+                        <input type="text" id="chatbox-gemni" name="message" placeholder="Type a message...">
+                        <button type="button" onclick="sendMessage()">Send</button>
+                    </div>
                 </div>
-                <div class="chatbox-messages" id="chatbox-messages">
-                    <!-- Messages will appear here -->
-                </div>
-                <div class="chatbox-input">
-                    <input type="text" id="chatbox-gemni" name="message" placeholder="Type a message...">
-                    <button type="button" onclick="sendMessage()">Send</button>
-                </div>
-            </div>
 
-
-
-
-
-
+            <% } %>
             <%-body-%>
 
         </main>
